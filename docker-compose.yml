@@ -1,0 +1,19 @@
+version: "3.8"
+
+services:
+  exporter:
+    build: .
+    environment:
+      ENQUEUE_DSN: redis://redis:6379
+      QUEUE_PREFIX: "queue:"
+    ports:
+      - "8080:80"
+    volumes:
+      - .:/var/www/html
+    depends_on:
+      - redis
+
+  redis:
+    image: redis:7
+    ports:
+      - "6379:6379"

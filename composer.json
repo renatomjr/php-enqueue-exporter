@@ -1,0 +1,20 @@
+{
+  "name": "renatomjr/php-enqueue-exporter",
+  "description": "Prometheus exporter for php-enqueue queues",
+  "type": "project",
+  "require": {
+    "php": "^8.0",
+    "slim/slim": "^4.10",
+    "slim/psr7": "^1.5",
+    "promphp/prometheus_client_php": "^2.14",
+    "predis/predis": "^3.0",
+    "enqueue/dsn": "^0.10.26"
+  },
+  "autoload": {
+    "psr-4": {
+      "Exporter\\": "src/"
+    }
+  },
+  "minimum-stability": "stable",
+  "license": "MIT"
+}
