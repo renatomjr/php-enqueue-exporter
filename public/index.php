@@ -23,4 +23,10 @@ $app->get('/metrics', function ($request, $response) use ($collector) {
     return $response->withHeader('Content-Type', 'text/plain');
 });
 
+$app->get('/health', function ($request, $response) {
+    $response->getBody()->write('OK');
+    $response->withHeader('Content-Type', 'text/plain');
+    return $response->withStatus(200);
+});
+
 $app->run();
