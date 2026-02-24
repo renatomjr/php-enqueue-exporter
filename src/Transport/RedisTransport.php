@@ -38,6 +38,9 @@ class RedisTransport implements TransportInterface
 
     public function getQueueMessagesCount(string $queueName): int
     {
-        return $this->redis->llen($this->keyPrefix . $queueName);
+        $messagesCount = (int)$this->redis->llen($this->keyPrefix . $queueName);
+        $delayedMessagesCount = (int)$this->redis->zcard($this->keyPrefix . $queueName . ':delayed');
+
+        return $messagesCount + $delayedMessagesCount;
     }
 }
